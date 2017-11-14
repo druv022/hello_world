@@ -48,6 +48,12 @@ def read_dataset():
     print(x.shape, y.shape)
     print(np.all(np.isfinite(x)), np.all(np.isfinite(y)))
 
+    num = 0
+    if num < 5:
+        print("x:",x)
+        print("y",y)
+        num +=1
+
     return x, y
 
 
@@ -64,15 +70,18 @@ def train_mlp():
 
     scaler = StandardScaler()
     scaler.fit(x_train)
+
+    print("x_train", x_train)
     x_train = scaler.transform(x_train)
     x_test = scaler.transform(x_test)
+    print("x_train", x_train)
 
     model.fit(x_train, y_train)
 
-    return model.score(x_test, y_test), model
+    return model.score(x_test, y_test), model,scaler
 
 def get_model():
-    score, model_ = train_mlp()
+    score, model_, scaler_ = train_mlp()
 
     flag = True
     i = 0
@@ -80,12 +89,18 @@ def get_model():
         if score > 0.60:
             filename = "TrainedModel.p"
             pickle.dump(model_, open(filename, 'wb'))
+
+            filename = "TrainScale.p"
+            pickle.dump(scaler_, open(filename, 'wb'))
+
             print("Model saved: score", score)
             flag = False
             i=20
         else:
-            score, model_ = train_mlp()
+            score, model_, scaler_ = train_mlp()
             i += 1
 
 
 get_model()
+
+#read_dataset()
