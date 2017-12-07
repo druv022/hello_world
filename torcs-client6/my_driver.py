@@ -185,6 +185,7 @@ class MyDriver(Driver):
 
         if self.flag and self.counter > 110 and car_speed > -31:
             command.gear = carstate.gear - 1
+            command.steering = - command.steering
             #print("reverse")
         elif command.gear == -1 :
             command.gear = 1

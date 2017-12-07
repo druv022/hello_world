@@ -1,7 +1,7 @@
 import torch
 from torch.autograd import Variable
 from random import randint
-import tensorflow as tf
+#import tensorflow as tf
 import torch.nn as nn
 import numpy as np
 import csv
