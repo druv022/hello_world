@@ -55,16 +55,15 @@ class MyDriver(Driver):
         self.network = None
         self.flag = False
         self.counter = 0
+        self.count=0
+        self.speed_x=0.0
+        self.distance=0.0
+        self.brake=0.0
+        self.damage=0.0
 
 
     def drive(self, carstate: State) -> Command:
-        """
-        Produces driving command in response to newly received car state.
 
-        This is a dummy driving routine, very dumb and not really considering a
-        lot of inputs. But it will get the car (if not disturbed by other
-        drivers) successfully driven along the race track.
-        """
         command = Command()
         command.meta=0
 
@@ -195,10 +194,7 @@ class MyDriver(Driver):
        
         command.brake=min(1,output.data[0,1])   
         command.brake=max(0,command.brake)      
-        #self.accelerate(carstate, v_x, command)
 
-        #if self.data_logger:
-         #   self.data_logger.log(carstate, command)
         logging.info(str(command.accelerator) +","+str(command.brake) +","+str( command.steering)+","+str(l_predict))      
         
         return command
@@ -206,7 +202,7 @@ class MyDriver(Driver):
     def get_best_network(self):
 
         networks=[]
-        filename="best/best" +'.pkl'
+        filename="best" +'.pkl'
         with open(filename, 'rb') as input:
              network=pickle.load(input)  
         return network
