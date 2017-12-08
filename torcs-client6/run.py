@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-from pytocl.main import main
+from main import main
 from my_driver import MyDriver
 
 if __name__ == '__main__':

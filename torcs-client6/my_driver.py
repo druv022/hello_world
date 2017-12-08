@@ -1,5 +1,5 @@
-from pytocl.driver import Driver
-from pytocl.car import State, Command
+from driver import Driver
+from car import State, Command
 import sys
 
 
@@ -8,9 +8,9 @@ import logging
 import sys
 import math
 import csv
-from pytocl.analysis import DataLogWriter
-from pytocl.car import State, Command, MPS_PER_KMH
-from pytocl.controller import CompositeController, ProportionalController, \
+from analysis import DataLogWriter
+from car import State, Command, MPS_PER_KMH
+from controller import CompositeController, ProportionalController, \
     IntegrationController, DerivativeController
 import numpy as np
 import pickle

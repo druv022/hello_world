@@ -1,1 +1,7 @@
-run.py
+#! /usr/bin/env python3
+
+from main import main
+from my_driver import MyDriver
+
+if __name__ == '__main__':
+    main(MyDriver(logdata=False))

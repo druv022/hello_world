@@ -2,8 +2,8 @@ import enum
 import logging
 import socket
 
-from pytocl.car import State as CarState
-from pytocl.driver import Driver
+from car import State as CarState
+from driver import Driver
 
 _logger = logging.getLogger(__name__)
 
@@ -31,7 +31,7 @@ class Client:
 
     def __init__(self, hostname='localhost', port=3001, *,
                  driver=None, serializer=None):
-        self.hostaddr = (hostname, 3003)
+        self.hostaddr = (hostname, port)
         self.driver = driver or Driver()
         self.serializer = serializer or Serializer()
         self.state = State.STOPPED
