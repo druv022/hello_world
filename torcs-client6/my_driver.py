@@ -206,7 +206,7 @@ class MyDriver(Driver):
     def get_best_network(self):
 
         networks=[]
-        filename="best/best" +'.pkl'
+        filename="best" +'.pkl'
         with open(filename, 'rb') as input:
              network=pickle.load(input)  
         return network
